@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @playdate.location %>
+</p>
+
+<p>
+  <strong>Playmates:</strong>
+  <% @playdate.kids.each do |playmate| %>
+  <%= link_to playmate.name, playmate %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_playdate_path(@playdate) %> |
+<%= link_to 'Back', playdates_path %>

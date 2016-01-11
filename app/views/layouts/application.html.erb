@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Playd8Rails</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<center><%=image_tag("playd8_logo.png", alt: "Playd8 Logo")%></center>
+  <% if flash[:error] %>
+    <div>Error: <%= flash[:error] %></div>
+  <% end %>
+
+  <% if flash[:notice] %>
+    <div><%= flash[:notice] %></div>
+  <% end %>
+
+  <% if logged_in? %>
+    Current user is: <%= current_user.name  %>
+    <%= link_to "Log out", sessions_path, method: :delete %>
+  <% else %>
+    <%= link_to "Sign up", new_registration_path %> |
+    <%= link_to "Sign in", new_session_path %>
+  <% end %>
+
+<%= yield %>
+<div class="footer">
+<p>Looking for Something? Click Below:</p>
+* <a href=<%="/"%>>Home Page</a> * <a href=<%="/parents"%>>Current Parents</a>  * <a href=<%="/kids"%>>Current Kids</a>  * <a href=<%="/playdates"%>>Current Playdates</a>  *  <a href=<%="/kids/new"%>>Add a Kid</a>  *  <a href=<%="/playdates/new"%>>Make a Playdate</a> *
+</div>
+</body>
+</html>
